@@ -62,7 +62,7 @@ export function generateReducers<T extends Record<string, unknown>>(initialState
 
 export function getMetaByAction<T extends Record<string, unknown>>(action: PayloadAction) {
   const actionByArr = action.type.split(`/`);
-  const field = actionByArr[1].split("change")[1];
+  const field = (actionByArr[1] || '').split("change")[1] || '';
   const fieldName = decapitalize<KeyOfDeps<T>>(field);
 
   return {fieldName, managerName: actionByArr[0]}

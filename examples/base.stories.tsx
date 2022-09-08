@@ -1,6 +1,19 @@
+import { createSlice } from '@reduxjs/toolkit';
 import {createSliceManager} from '../src';
 
 export type State = {counter: number, short: boolean}
+
+export const simpleSlice = createSlice({
+  name: 'slice',
+  initialState: {
+    value: '',
+  },
+  reducers: {
+    setCustomValue: (state, action) => {
+      state.value = action.payload;
+    }
+  }
+})
 
 export const manager = createSliceManager<State>({
   name: 'manager', 
@@ -25,4 +38,27 @@ export const manager = createSliceManager<State>({
       fields: ['counter']
     },
   ],
+})
+
+export type NestedState = {
+  counter: number,
+  short: boolean,
+  modal: {
+      create: {
+          open: boolean
+      }
+  }
+}
+
+export const nestedManager = createSliceManager<NestedState>({
+  name: 'nestedManager', 
+  initialState: {
+      counter: 1,
+      short: false,
+      modal: {
+          create: {
+              open: false
+          }
+      }
+  },
 })
