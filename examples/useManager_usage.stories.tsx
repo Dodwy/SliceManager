@@ -15,6 +15,10 @@ export const App = () => {
   }, [])
   /////////////
 
+  const update = () => {
+    dispatch(manager.updateSubscriptions())
+  }
+
   return (
       <div>
       <h1>{counter}</h1>
@@ -22,6 +26,7 @@ export const App = () => {
       <button onClick={() => changeCounter(counter + 1)}>
         change name
       </button>
+      <button onClick={update}>update</button>
       <input type="checkbox" onChange={(e) => changeShort(e.target.checked)} />
     </div>
   )

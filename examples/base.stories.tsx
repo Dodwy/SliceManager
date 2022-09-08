@@ -26,7 +26,7 @@ export const manager = createSliceManager<State>({
       handler: (state) => (dispatch, getState) => {
           // After changing the property short - counter increases by 10
           dispatch(manager.actions.changeCounter(state.counter + 10));
-      }, 
+      },
       fields: ['short']
     },
     {
@@ -34,8 +34,13 @@ export const manager = createSliceManager<State>({
         // any action
         // Be careful not to allow circular dependencies
         // Do not change "short" here, because a cycle will appear
-      }, 
-      fields: ['counter']
+        
+        // __DEV__ //
+        console.log('request api', state)
+        ////////////
+      },
+      isSubscriber: true,
+      fields: ['counter', 'short']
     },
   ],
 })

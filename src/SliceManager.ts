@@ -26,6 +26,11 @@ import {
    });
    const actions: ManagerActions<T> = slice.actions;
  
+   const updateSubscriptions: SliceManager<T>['updateSubscriptions'] = () => (dispatch, getState) => {
+    const state = getState()[name];
+    watchers.forEach(e => e.isSubscriber ? dispatch(e.handler(state)) : void 0)
+   }
+
    const middleware: ManagerMiddleware<T> =
      ({ dispatch, getState }) =>
      (next) =>
@@ -48,6 +53,7 @@ import {
        actions,
        name,
        middleware,
+       updateSubscriptions,
        slice,
      }
  }

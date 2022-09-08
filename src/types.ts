@@ -46,6 +46,7 @@ export type CapitalizeHookHandlers<S extends State> = TransformKeysToCamelCase<H
 export interface Watcher<T extends State> {
   handler: (params: T) => WatcherHandlerAction<T>;
   fields: Deps<T>
+  isSubscriber?: boolean;
 } 
 export type WatcherHandlerAction<T> = ThunkAction<any, T & any, undefined, Action<string>>
 export type ManagerMiddleware<T> = ThunkMiddleware<T & any, AnyAction, undefined>
@@ -60,10 +61,12 @@ export interface ManagerOptions<T extends State> {
     reducers?: ManagerReducers<T, Partial<CapitalizeHandlers<T>> & SliceCaseReducers<T>>,
     extraReducers?: ManagerExtraReducers<T>
 }
+
 export type SliceManager<T extends State> = {
   actions: ManagerActions<T>,
   name: string,
   middleware: ManagerMiddleware<T>,
+  updateSubscriptions: () => WatcherHandlerAction<T>;
   slice: Slice<T, SliceCaseReducers<T>>,
 }
 // ------------------------
