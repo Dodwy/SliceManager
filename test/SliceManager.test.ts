@@ -51,7 +51,7 @@ describe('SliceManager', () => {
 
    it('get initialState', () => {
     const state = store.getState().manager;
-    expect(state).toBe('2');
+    expect(state).toBe('initialState');
    });
 
    it('get actions', () => {
