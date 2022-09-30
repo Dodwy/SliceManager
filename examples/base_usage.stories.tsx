@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {manager} from './base.stories';
-console.log('test')
+
 export const App = () => {
   const {counter, short} = useSelector((state) => state[manager.name])
   const dispatch = useDispatch();
