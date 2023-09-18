@@ -16,7 +16,11 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=1ae307313146"
+    "chromatic": "npx chromatic --project-token=1ae307313146",
+    "release": "standard-version",
+    "release:patch": "npm run release -- --release-as patch",
+    "release:minor": "npm run release -- --release-as minor",
+    "release:major": "npm run release -- --release-as major"
   },
   "repository": {
     "type": "git",
@@ -82,6 +86,7 @@
     "jest": "^26.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "standard-version": "^9.5.0",
     "ts-jest": "26.0.0",
     "typescript": "4.5.2"
   },
