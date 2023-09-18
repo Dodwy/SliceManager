@@ -1,6 +1,9 @@
 
 const date = new Date().toISOString();
 
+const testConstant = 'test';
+console.log(testConstant);
+
 export const object = {
     name: 'test',
     date,
